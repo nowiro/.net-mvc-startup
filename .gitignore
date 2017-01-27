@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/config
+/WebAppLessSassVueWebpack/node_modules
+/WebAppLessSassVueWebpack/Images/apple-touch-icon/apple-touch-icon-114x114-precomposed.psd

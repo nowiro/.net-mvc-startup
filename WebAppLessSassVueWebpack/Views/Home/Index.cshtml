@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div id="app">
+    {{ message }}
+</div>
+
+<div id="app-4">
+    <ol>
+        <li v-for="todo in todos">
+            {{ todo.text }}
+        </li>
+    </ol>
+</div>
+
+<div id="app-6">
+    <p>{{ message }}</p>
+    <input v-model="message">
+</div>
+
+
+
+<!-- template for the modal component -->
+<script type="text/x-template" id="modal-template">
+    <transition name="modal">
+        <div class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-container">
+
+                        <div class="modal-header">
+                            <slot name="header">
+                                default header
+                            </slot>
+                        </div>
+
+                        <div class="modal-body">
+                            <slot name="body">
+
+                                
+                                <button id="show-modal2" @@click="showModal2 = true">Show Modal</button>
+                                <!-- use the modal component, pass in the prop -->
+                                <modal v-if="showModal2" @@close="showModal2 = false">
+                                    <!--
+        you can use custom content here to overwrite
+        default content
+        -->
+                                    <h3 slot="header">custom header 222</h3>
+                                </modal>
+                                
+
+                            </slot>
+                        </div>
+
+                        <div class="modal-footer">
+                            <slot name="footer">
+                                default footer
+                                <button class="modal-default-button" @@click="$emit('close')">
+                                    OK
+                                </button>
+                            </slot>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </transition>
+</script>
+
+<!-- app -->
+<div id="appmodal">
+    <button id="show-modal" @@click="showModal = true">Show Modal</button>
+    <!-- use the modal component, pass in the prop -->
+    <modal v-if="showModal" @@close="showModal = false">
+        <!--
+        you can use custom content here to overwrite
+        default content
+        -->
+        <h3 slot="header">custom header 111</h3>
+    </modal>
+</div>
+
+
+<div id="appalert"> 
+    <button id="show-alert" @@click="showAlert = true">Show alert</button>
+    <!-- use the modal component, pass in the prop -->
+    <alert type="success">
+        <p>!!! alert</p>
+    </alert>
+</div>
